@@ -30,7 +30,16 @@ module.exports = {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
       accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        process.env.ETHEREUM_HARDHAT_PRIVATE_KEY !== undefined
+          ? [process.env.ETHEREUM_HARDHAT_PRIVATE_KEY]
+          : [],
+    },
+    mainnet: {
+      url: process.env.MAINNET_URL,
+      accounts:
+        process.env.ETHEREUM_HARDHAT_PRIVATE_KEY !== undefined
+          ? [process.env.ETHEREUM_HARDHAT_PRIVATE_KEY]
+          : [],
     },
   },
   gasReporter: {
