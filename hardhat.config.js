@@ -35,7 +35,7 @@ module.exports = {
           : [],
     },
     mainnet: {
-      url: process.env.MAINNET_URL,
+      url: process.env.MAINNET_URL || "",
       accounts:
         process.env.ETHEREUM_HARDHAT_PRIVATE_KEY !== undefined
           ? [process.env.ETHEREUM_HARDHAT_PRIVATE_KEY]
