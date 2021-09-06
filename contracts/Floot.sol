@@ -5,8 +5,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
+contract Floot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
         string[] private weapons = [
         "Warhammer",
@@ -317,7 +318,7 @@ contract Loot is ERC721Enumerable, ReentrancyGuard, Ownable {
         return string(buffer);
     }
 
-    constructor() ERC721("Loot", "LOOT") Ownable() {}
+    constructor() ERC721("Floot", "FLOOT") Ownable() {}
 }
 
 /// [MIT License]
