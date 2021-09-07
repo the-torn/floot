@@ -1,16 +1,16 @@
 # Floot = Fair Loot
 
-Floot is a blind drop implementation of Loot, designed to address [concerns](https://medium.com/@iamthetorn/stop-forking-loot-its-kind-of-broken-f1a1c986784d) around the smart contract design of [Loot](http://lootproject.com/). A secondary goal is to reduce gas costs for users.
+Floot is a blind drop implementation of Loot, designed to address [security concerns](https://medium.com/@iamthetorn/stop-forking-loot-its-kind-of-broken-f1a1c986784d) with the smart contract design of [Loot](http://lootproject.com/). A secondary goal is to reduce gas costs for users.
 
 Advantages of Floot over Loot and other approaches to on-chain randomness include:
 * Fair and random distribution of tokens.
-* Resistant to frontrunning, dark pools, and manipulation by miners.
-* Resistant to cheating by the NFT creator.
-* Contract has no owner and there is no founder allocation.
-* Estimated 31% reduction in gas cost per mint.
+* Secure against frontrunning, dark pools, and manipulation by miners.
+* Secure against cheating by the NFT creator.
+* No contract owner and no founder allocation.
+* A 31% reduction in gas cost per mint.
 
 Limitations:
-* None of the tokens are visible until after the end of the token distribution.
+* The tokens are not revealed until the end of the token distribution.
 
 ## Security design
 
