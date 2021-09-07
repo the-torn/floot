@@ -16,7 +16,7 @@ import { FlootMetadata } from "./FlootMetadata.sol";
  *
  *  Documentation: https://github.com/the-torn/floot/blob/main/README.md
  *
- *  Note: Deliberately choosing not to use ReentrancyGuard.
+ *  Note: Deliberately choosing not to use ReentrancyGuard, as a gas optimization.
  */
 contract Floot is
   FlootMetadata
@@ -58,9 +58,12 @@ contract Floot is
     // Issue tokens with IDs 1 through MAX_SUPPLY, inclusive.
     uint256 tokenId = startingTotalSupply + 1;
 
-    // Note: Deliberately choosing not to use _safeMint().
-    _mint(msg.sender, tokenId);
+    // IMPORTANT: Update total supply before _safeMint() to avoid reentrancy attacks.
+    // (checks-effects-interactions)
     _totalSupply = tokenId;
+
+    // Mint the token. This may trigger a call on the receiver if it is a smart contract.
+    _safeMint(msg.sender, tokenId);
   }
 
   function setAutomaticSeedBlockNumber()
@@ -70,8 +73,9 @@ contract Floot is
   }
 
   function totalSupply()
-    external
+    public
     view
+    override
     returns (uint256)
   {
     return _totalSupply;

@@ -2,10 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
 import { BlindDrop } from "./BlindDrop.sol";
 import { Base64 } from "./Base64.sol";
+import { ERC721EnumerableOptimized } from "./ERC721EnumerableOptimized.sol";
 import { FlootConstants } from "./FlootConstants.sol";
 
 /**
@@ -19,7 +18,7 @@ import { FlootConstants } from "./FlootConstants.sol";
  */
 abstract contract FlootMetadata is
   BlindDrop,
-  ERC721
+  ERC721EnumerableOptimized
 {
   function random(
     string memory input

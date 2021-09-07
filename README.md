@@ -7,11 +7,10 @@ Advantages of Floot over Loot and other approaches to on-chain randomness includ
 * Resistant to frontrunning, dark pools, and manipulation by miners.
 * Resistant to cheating by the NFT creator.
 * Contract has no owner and there is no founder allocation.
-* Estimated 60% reduction in gas cost per mint.
+* Estimated 31% reduction in gas cost per mint.
 
 Limitations:
 * None of the tokens are visible until after the end of the token distribution.
-* The gas cost optimizations have certain technical caveats which should not affect users. These are discussed below.
 
 ## Security design
 
@@ -92,8 +91,6 @@ Floot is deployed with the following constructor parameters:
 * `guardianWindowDurationSeconds` - Period of time after the distribution, during which the guardian should provide their seed.
 * `maxDistributionDurationSeconds` - Period of time after deployment after which the distribution will end even if the max supply was not distributed.
 * `maxSupply` - The maximum number of tokens that can ever be minted.
-
-## Gas Optimizations
 
 ## Previous work
 
