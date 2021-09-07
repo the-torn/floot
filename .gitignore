@@ -1,3 +1,8 @@
+node_modules/
+.DS_Store
+.env
+test/test.svg
+
 # Logs
 logs
 *.log
@@ -103,9 +108,8 @@ dist
 # TernJS port file
 .tern-port
 
-node_modules
-.env
-
 #Hardhat files
-cache
-artifacts
+artifacts/
+cache/
+deployments/
+typechain/

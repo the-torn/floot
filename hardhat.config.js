@@ -2,7 +2,10 @@ require("dotenv").config();
 
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-waffle");
+require("hardhat-deploy");
+require("hardhat-deploy-ethers");
 require("hardhat-gas-reporter");
+// require("hardhat-typechain");
 require("solidity-coverage");
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -26,6 +29,8 @@ module.exports = {
   networks: {
     hardhat: {
       initialBaseFeePerGas: 0, // workaround from https://github.com/sc-forks/solidity-coverage/issues/652#issuecomment-896330136 . Remove when that issue is closed.
+      gas: 12000000,
+      blockGasLimit: 0x1fffffffffffff,
     },
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
