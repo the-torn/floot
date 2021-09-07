@@ -86,6 +86,10 @@ abstract contract BlindDrop {
     external
   {
     require(
+      _guardianOrFallbackSeed == bytes32(0),
+      "Seed already set"
+    );
+    require(
       _automaticSeed != bytes32(0),
       "Automatic seed not set"
     );
@@ -141,10 +145,6 @@ abstract contract BlindDrop {
     require(
       _finalSeed == bytes32(0),
       "Final seed already set"
-    );
-    require(
-      _automaticSeed != bytes32(0),
-      "Automatic seed not set"
     );
     require(
       _guardianOrFallbackSeed != bytes32(0),
