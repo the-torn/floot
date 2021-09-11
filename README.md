@@ -12,6 +12,47 @@ Advantages of Floot over Loot and other designs include:
 Limitations:
 * The tokens are not revealed until the end of the token distribution.
 
+## Deploying Floot
+
+### Constructor parameters
+
+Floot is deployed with the following constructor parameters:
+* `guardianHash` - Hash of the seed held by the guardian as one of the inputs to randomness.
+* `guardianWindowDurationSeconds` - Period of time after the distribution, during which the guardian should provide their seed.
+* `maxDistributionDurationSeconds` - Period of time after deployment after which the distribution will end even if the max supply was not distributed.
+* `maxSupply` - The maximum number of tokens that can ever be minted.
+
+See [`./scripts/deploy.js`](./scripts/deploy.js) for some details and recommended defaults, but note that **a different `guardianHash` must be used for every deployment**. See below for instructions on generating a new `guardianHash`.
+
+### Guardian seed and hash
+
+The guardian hash is used as one of the inputs to randomness, to minimize the ability of miners to independently exploit the distribution. The guardian for a distribution can be a member of the team launching the NFT, or any semi-trusted third party.
+
+The guardian hash is the keccak hash of a random, secret 32-byte seed. Make sure the seed is generated securely with at least 16 bytes of entropy. For convenience, we can generate the seed from a password.
+
+In JavaScript:
+
+```javascript
+const password = require('crypto').randomBytes(24).toString('base64')
+const seed = require('Web3').utils.soliditySha3(password)
+const hash = require('Web3').utils.soliditySha3(seed)
+
+console.log(`Guardian password: ${password}`)
+console.log(`Guardian hash: ${hash}`)
+```
+
+The password or seed should be stored securely by the guardian. The guardian hash is public and should be passed as a constructor parameter to the Floot smart contract.
+
+When the distribution has ended, the following function calls should be made to reveal the NFTs:
+
+```javascript
+setAutomaticSeedBlockNumber();
+// Must be a full gap of one block before the next call.
+setAutomaticSeed();
+setGuardianSeed(guardianSeed);
+setFinalSeed();
+```
+
 ## Security design
 
 ### Overview
@@ -79,14 +120,6 @@ Some contracts use a “naive” source of randomness based on the block metadat
 However, since the outcome of a mint is observable on-chain, an attacker can wrap minting calls in a smart contract that reverts if a minted token does not have the desired rarity. By using dark pools (e.g. Flashbots) an attacker can reduce the cost of failed mint attempts, which may make this attack efficient in practice.
 
 This vulnerability leaves us in a worse place than where we started, since it can skew the rarity distribution of the series as a whole.
-
-## Constructor Parameters
-
-Floot is deployed with the following constructor parameters:
-* `guardianHash` - Hash of the seed held by the guardian as one of the inputs to randomness.
-* `guardianWindowDurationSeconds` - Period of time after the distribution, during which the guardian should provide their seed.
-* `maxDistributionDurationSeconds` - Period of time after deployment after which the distribution will end even if the max supply was not distributed.
-* `maxSupply` - The maximum number of tokens that can ever be minted.
 
 ## References
 

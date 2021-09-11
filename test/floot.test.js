@@ -82,7 +82,7 @@ describe("Floot tests", function () {
 
       // Finalize random seed.
       await floot.setAutomaticSeedBlockNumber();
-      await ethers.provider.send("evm_mine", []);
+      await ethers.provider.send("evm_mine", []); // Must wait an extra block.
       await floot.setAutomaticSeed();
       await floot.setGuardianSeed(GUARDIAN_TEST_SEED);
       await floot.setFinalSeed();
@@ -327,7 +327,7 @@ describe("Floot tests", function () {
     it("Blind drop fallback flow, if guardian window elapses", async () => {
       // Set automatic seed.
       await floot.setAutomaticSeedBlockNumber();
-      await ethers.provider.send("evm_mine", []);
+      await ethers.provider.send("evm_mine", []); // Must wait an extra block.
       const tx = await floot.setAutomaticSeed();
 
       // Record the automatic seed.
