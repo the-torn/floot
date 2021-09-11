@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
+//
+// Retrieved from https://github.com/Arachnid/solidity-stringutils/blob/master/src/strings.sol
+// Modified to update Solidity version and include only certain functions.
 
 pragma solidity ^0.8.0;
 

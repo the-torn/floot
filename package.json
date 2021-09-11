@@ -13,8 +13,8 @@
     "url": "git+https://github.com/the-torn/floot.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "the-torn",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/the-torn/floot/issues"
   },

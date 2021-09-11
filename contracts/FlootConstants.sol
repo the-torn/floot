@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: Apache-2.0
 
 pragma solidity ^0.8.0;
 
@@ -10,8 +10,11 @@ import { strings } from "./strings.sol";
  *
  * @notice External library for constants used by Floot.
  *
- *  Adapted directly from the original Loot. The CSV optimization is owed to zefram.eth.
  *  This is an external library in order to keep the main contract within the bytecode limit.
+ *
+ *  Based closely on the original Loot implementation (MIT License).
+ *  https://etherscan.io/address/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7#code#L1
+ *  The CSV optimization is owed to zefram.eth.
  */
 library FlootConstants {
   using strings for string;

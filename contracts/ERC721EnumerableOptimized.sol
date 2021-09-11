@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: Apache-2.0
 
 pragma solidity ^0.8.0;
 
@@ -13,7 +13,9 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
  *   - Minting is sequential, beginning with token ID 1.
  *   - Burning is impossible.
  *
- *  Based on the OpenZeppelin ERC721Enumerable implementation.
+ *  IMPORTANT: Do not use this contract with NFTs where the above two conditions are not guaranteed.
+ *
+ *  Based on the OpenZeppelin ERC721Enumerable implementation (MIT license).
  *  https://github.com/OpenZeppelin/openzeppelin-contracts/blob/aefcb3e8aa4ee8da8e2b7022ffe4dcb57fbb0fdf/contracts/token/ERC721/extensions/ERC721Enumerable.sol
  */
 abstract contract ERC721EnumerableOptimized is
