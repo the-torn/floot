@@ -10,9 +10,9 @@ const hre = require("hardhat");
  *  This is a commitment to the bytes32 seed that will be posted by the guardian after the end of
  *  the distribution, as one of the inputs to the final seed.
  *
- *  See README.d for instructions on how to generate a seed before deployment.
+ *  See README.md for instructions on how to generate a seed before deployment.
  */
-const GUARDIAN_SEED_HASH = "0x9ce720d21dd03123c0c2199e0c5433d01c7ac64ab729b1ec57de813014cce8bf";
+const GUARDIAN_SEED_HASH = "TODO"; // IMPORTANT: Generate a unique seed per deployment.
 
 /**
  * @notice Determines how long the guardian has to provide their seed, after the distribution end.

@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const fs = require("fs");
 
 const { BigNumber } = require("@ethersproject/bignumber");
@@ -5,7 +6,9 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const Web3 = require("web3");
 
-const GUARDIAN_TEST_SEED = Web3.utils.soliditySha3("test-seed");
+const GUARDIAN_TEST_SEED = Web3.utils.soliditySha3(
+  `test-seed-${crypto.randomBytes(24).toString("base64")}`
+);
 const TOKEN_URI_PREFIX = "data:application/json;base64,";
 const SVG_PREFIX = "data:image/svg+xml;base64,";
 const ERC721_INTERFACE_ID = BigNumber.from(0x80ac58cd);
